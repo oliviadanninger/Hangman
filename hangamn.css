@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Yuji+Syuku&display=swap');
+
+body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.687);
+    z-index: 2;
+}
+
+p {
+    font-family: 'Shadows Into Light', cursive;
+    text-transform: uppercase;
+    font-size: 2em;
+}
+
+span {
+    font-family: 'Alfa Slab One', cursive;
+}
+
+#hints p {
+    text-align: center;
+    visibility: hidden;
+    font-size: 1.2em;
+}
+
+#hints:hover p {
+    visibility: visible;
+}
+
+#hints {
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #10691c, 0 0 30px #10691c, 0 0 40px #10691c, 0 0 55px #10691c, 0 0 75px #10691c;
+}
+
+#counter,
+#guessed,
+#guessed-container,
+#svg-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#guessed-container {
+    justify-content: space-between;
+}
+
+#counter,
+#guessed {
+    margin-top: 35%;
+}
+
+#counter p,
+#guessed p {
+    color: red;
+    margin: 0 4px;
+    letter-spacing: 4px;
+}
+
+#scaffold,
+#head,
+#body,
+#arms,
+#legs {
+    visibility: hidden;
+}
+
+#hidden-text {
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: center;
+    margin: 2rem;
+    padding: 2rem;
+}
+
+#hidden-text div {
+    width: 2rem;
+    margin: 2rem 2rem 0rem 0rem;
+    border-bottom: 2px solid black;
+}
+
+#hidden-text p {
+    text-align: center;
+    margin-bottom: 0;
+
+    animation-name: wiggle;
+    animation-duration: .4s;
+    animation-iteration-count: 1s;
+}
+
+#svg-container {
+    position: relative;
+}
+
+#game-over,
+#you-win {
+    width: 100%;
+    position: absolute;
+    top: 30%;
+    visibility: hidden;
+    z-index: 3;
+}
+
+#game-over #text,
+#game-over #line {
+    fill: red;
+}
+
+#you-win text {
+    text-transform: uppercase;
+    animation: stroke 5s infinite alternate;
+    stroke-width: 2;
+    stroke: #365fa0;
+    font-size: 140px;
+}
+
+#try-again {
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(231, 231, 231, 0.555);
+    border-radius: 15px;
+    padding: .3em 1em;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    font-family: 'Shadows Into Light', cursive;
+    text-transform: uppercase;
+    font-size: 2em;
+}
+
+#try-again:hover {
+    background-color: rgba(0, 94, 255, 0.44);
+}
+
+.first-letter {
+    animation: slideIn 4s 0s infinite;
+}
+
+.second-letter {
+    animation: slideIn 4s 1s infinite;
+}
+
+.third-letter {
+    animation: slideIn 4s 2s infinite;
+}
+
+.fourth-letter {
+    animation: slideIn 4s 3s infinite;
+}
+
+.fifth-letter {
+    animation: slideIn 4s 4s infinite;
+}
+
+.sixth-letter {
+    animation: slideIn 4s 5s infinite;
+}
+
+.seventh-letter {
+    animation: slideIn 4s 6s infinite;
+}
+
+.eighth-letter {
+    animation: slideIn 4s 7s infinite;
+
+}
+
+.under-line {
+    animation: underLine 0s 24s 1;
+}
+
+
+@keyframes slideIn {
+    0% {
+        transform: scaleY(0.0);
+    }
+
+    100% {
+        transform: scaleY(1.0)
+    }
+}
+
+@keyframes swoopOutBottom {
+    0% {
+        -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+        animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+        -webkit-transform: scaleY(1) translate3d(0, 0, 0);
+        transform: scaleY(1) translate3d(0, 0, 0);
+    }
+
+    40% {
+        opacity: 1;
+        -webkit-transform: scaleY(1) translate3d(0, -20px, 0);
+        transform: scaleY(1) translate3d(0, -20px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+        animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+        -webkit-transform: scaleY(1.2) translate3d(0, 0, 0);
+        transform: scaleY(1.2) translate3d(0, 0, 0);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        -webkit-transform: scaleY(1.5) translate3d(0, 200px, 0);
+        transform: scaleY(1.5) translate3d(0, 200px, 0);
+    }
+}
+
+
+@keyframes wiggle {
+
+    25% {
+        transform: rotate(20deg) scale(2);
+    }
+
+    50% {
+        transform: rotate(0deg) scale(1.7);
+    }
+
+    75% {
+        transform: rotate(-20deg) scale(1.4);
+
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1.1)
+    }
+}
+
+
+@keyframes grow-shrink {
+    from {
+        transform: scale(1.5);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes stroke {
+
+    0% {
+
+        fill: rgba(72, 138, 20, 0);
+        stroke: rgb(0, 0, 0);
+
+        stroke-dashoffset: 25%;
+        stroke-dasharray: 0 50%;
+        stroke-width: 2;
+
+        text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #fd3503, 0 0 30px #fd3503, 0 0 40px #fd3503, 0 0 55px #fd3503, 0 0 75px #fd3503;
+
+    }
+
+    70% {
+        fill: rgba(72, 138, 20, 0);
+        stroke: rgb(0, 0, 0);
+    }
+
+    80% {
+        fill: rgba(72, 138, 20, 0);
+        stroke: rgb(0, 0, 0);
+        stroke-width: 3;
+        text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #fd3503, 0 0 30px #fd3503, 0 0 40px #fd3503, 0 0 55px #fd3503, 0 0 75px #fd3503;
+    }
+
+    100% {
+        fill: rgb(0, 0, 0);
+        stroke: rgb(0, 0, 0);
+        stroke-dashoffset: -25%;
+        stroke-dasharray: 50% 0;
+        stroke-width: 0;
+        text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #fd3503, 0 0 30px #fd3503, 0 0 40px #fd3503, 0 0 55px #fd3503, 0 0 75px #fd3503;
+    }
+}
+
+.fold {
+    -webkit-animation-name: fold;
+    animation-name: fold;
+}
